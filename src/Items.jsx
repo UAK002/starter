@@ -3,13 +3,12 @@ import SingleItem from './SingleItem';
 import { useQuery } from '@tanstack/react-query';
 import customFetch from './utils';
 
-// const Items = ({ items }) => {
 const Items = () => {
-  // const results = useQuery({
-  const { isLoading, data } = useQuery({
+  const { isLoading, data, isError, error } = useQuery({
     queryKey: ['tasks'],
     queryFn: async () => {
-      const { data } = await customFetch.get('/');
+      // const { data } = await customFetch.get('/');
+      const { data } = await customFetch.get('/something');
       return data;
     },
   });
@@ -18,12 +17,21 @@ const Items = () => {
     return <p style={{ marginTop: '1rem' }}>Loading...</p>;
   }
 
+  if (isError) {
+    return <p style={{ marginTop: '1rem' }}> There was an error...</p>;
+  }
+  // console.log(error);
+  // if (isError) {
+  //   return <p style={{ marginTop: '1rem' }}>{error.message}</p>;
+  // }
+  // if (isError) {
+  //   return <p style={{ marginTop: '1rem' }}>{error.response.data}</p>;
+  // }
+
   console.log(data);
 
   return (
     <div className="items">
-      {/* {items.map((item) => { */}
-      {/* {data.data.taskList.map((item) => { */}
       {data.taskList.map((item) => {
         return <SingleItem key={item.id} item={item} />;
       })}
