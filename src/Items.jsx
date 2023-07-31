@@ -7,8 +7,8 @@ const Items = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ['tasks'],
     queryFn: async () => {
-      // const { data } = await customFetch.get('/');
-      const { data } = await customFetch.get('/something');
+      // const { data } = await customFetch.get('/something');
+      const { data } = await customFetch.get('/');
       return data;
     },
   });
