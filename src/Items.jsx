@@ -28,7 +28,7 @@ const Items = () => {
   //   return <p style={{ marginTop: '1rem' }}>{error.response.data}</p>;
   // }
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="items">
